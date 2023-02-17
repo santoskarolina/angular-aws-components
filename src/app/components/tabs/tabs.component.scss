@@ -1,0 +1,48 @@
+:host{
+  width: 100%;
+  height: 100%;
+}
+
+.com__tabs__container{
+  display: flex;
+  flex-direction: column;
+
+  &_content{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    height: 100%  ;
+    justify-content: center;
+
+    flex-direction: column;
+
+    padding: 1rem;
+
+    overflow-x: hidden;
+
+    .com__tab{
+      width: 8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #eee;
+      }
+
+      &-active{
+        border-bottom: 0.1rem solid blue;
+      }
+    }
+  }
+}
+
+.tab-active{
+  display: block;
+}
+
+.tab-inactive{
+  display: none;
+}
