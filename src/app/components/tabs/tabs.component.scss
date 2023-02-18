@@ -5,19 +5,14 @@
 
 .com__tabs__container{
   display: flex;
-  flex-direction: column;
 
   &_content{
     width: 90%;
     display: flex;
     align-items: center;
-    height: 100%  ;
-    justify-content: center;
-
+    height: 100%;
     flex-direction: column;
-
     padding: 1rem;
-
     overflow-x: hidden;
 
     .com__tab{
@@ -39,10 +34,14 @@
   }
 }
 
-.tab-active{
-  display: block;
-}
+// .tab-content-active{
+//   width: 100% !important;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// }
 
-.tab-inactive{
+.tab-content-active-not-active{
   display: none;
 }

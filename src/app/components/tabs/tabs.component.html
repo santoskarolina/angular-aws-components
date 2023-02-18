@@ -1,29 +1,36 @@
 <div class="com__tabs__container">
   <div class="com__tabs__container_content">
 
-    <div class="flex">
-      <div *ngFor="let tab of tabs; let index = index">
-        <ng-container
-        [ngTemplateOutlet]="tabHeader"
-        [ngTemplateOutletContext]="{ $implicit: tab, index: index }"></ng-container>
-        <!-- <div class="com__tab" [ngClass]="{'com__tab-active': tab.active === true }" (click)="selectTab(tab, index)">{{ tab.tabTitle }} </div> -->
+    <div class="flex flex-col w-full">
+
+      <div class="flex justify-{{tabAlign}} w-full">
+        <div *ngFor="let tab of tabs; let index = index">
+            <ng-container [ngTemplateOutlet]="tabHeader" [ngTemplateOutletContext]="{ $implicit: tab, index: index }"></ng-container>
+        </div>
       </div>
-    </div>
-    <ng-content></ng-content>
 
+      <div class="flex justify-center w-full mt-6">
+        <div *ngFor="let tabValue of tabs; let index = index">
+          <div
+            [@openClose]="{value: toggleTabAnimation(tabValue), params: {time: animationDuration}}"
+            [ngClass]="{'tab-content-active-not-active': !tabValue.active }">
+            <ng-container *ngTemplateOutlet="tabValue?.tabContent?.templateRef || null"></ng-container>
+
+          </div>
+        </div>
+      </div>
+
+      </div>
   </div>
-
 </div>
 
 <ng-template #tabHeader let-tab let-index="index">
-  <div class="com__tab" [ngClass]="{'com__tab-active': tab.active === true }"
-  (click)="selectTab(tab, index)" >
-  <ng-container
-        *ngTemplateOutlet="tab?.tabLabel?.templateRef || defaultHeader"></ng-container>
-</div>
+  <div class="com__tab" [ngClass]="{'com__tab-active': tab.active === true }" (click)="selectTab(tab, index)">
+    <ng-container *ngTemplateOutlet="tab?.tabLabel?.templateRef || defaultHeader"></ng-container>
+  </div>
 
   <ng-template #defaultHeader>
     <p>{{ tab.tabTitle }}</p>
   </ng-template>
-
 </ng-template>
+

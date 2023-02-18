@@ -46,6 +46,5 @@ export class AppComponent {
 ]
 
 selectedTabChange(event: number){
-  console.log(event)
 }
 }

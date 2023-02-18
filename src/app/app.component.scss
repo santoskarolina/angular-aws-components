@@ -1,0 +1,14 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs{
+  width: 90%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid #eee;
+  margin: 1rem 0;
+}

@@ -1,49 +1,191 @@
 <sidebar [@openClose]="isOpen ? 'open':'closed'" (isClosed)="isOpen = !isOpen"></sidebar>
 
-<comp-tabs (selectedTabChange)="selectedTabChange($event)">
-  <comp-tab tabTitle="First">
+
+<div class="tabs">
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Basic use of the tab group</p>
+  </div>
+
+  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
+    <tab-item tabTitle="First">
+      <ng-template tabContent>
       <button (click)="isOpen = !isOpen" class="p-1 bg-slate-600 text-white rounded-md my-4">Open Sidebar</button>
-  </comp-tab>
-
-  <comp-tab>
-    <ng-template tabLabel>
-      <mat-icon class="mr-2">thumb_up</mat-icon>
-      <p>Second</p>
     </ng-template>
+    </tab-item>
 
-    <div class="p-9 flex flex-col items-start">
-      <div class="flex w-[40rem]">
-        <accordeon [collapsing]="true" [spaccing]="false">
-          <accordion-item>
-            <ng-template accordionHeader let-toggle="toggle">
-              <div class="flex items-center justify-between cursor-pointer px-4 h-12 bg-gray-800" (click)="toggle()">
-                <p class="text-white"> Custom Header</p>
-                <div class="flex space-x-2">
-                  <button class="text-white">
-                    <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
-                  </button>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template accordionContent [component]="items[0].component">
-            </ng-template>
-          </accordion-item>
-        </accordeon>
-      </div>
-    </div>
-
-  </comp-tab>
-
-  <comp-tab tabTitle="Thrid">
+    <tab-item tabTitle="Second">
+      <ng-template tabContent>
       <div class="p-9 flex flex-col items-start">
         <div class="flex w-[40rem]">
           <accordeon [collapsing]="true" [spaccing]="false">
-            <accordion-item [title]="acc.title" *ngFor="let acc of items">
-              <ng-template accordionContent [component]="acc.component">
+            <accordion-item>
+              <ng-template accordionHeader let-toggle="toggle">
+                <div class="flex items-center justify-between cursor-pointer px-4 h-12 bg-gray-800" (click)="toggle()">
+                  <p class="text-white"> Custom Header</p>
+                  <div class="flex space-x-2">
+                    <button class="text-white">
+                      <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template accordionContent [component]="items[0].component">
               </ng-template>
             </accordion-item>
           </accordeon>
         </div>
       </div>
-  </comp-tab>
-</comp-tabs>
+    </ng-template>
+    </tab-item>
+
+    <tab-item tabTitle="Thrid">
+      <ng-template tabContent>
+        <div class="p-9 flex flex-col items-start">
+          <div class="flex w-[40rem]">
+            <accordeon [collapsing]="true" [spaccing]="false">
+              <accordion-item [title]="acc.title" *ngFor="let acc of items">
+                <ng-template accordionContent [component]="acc.component">
+                </ng-template>
+              </accordion-item>
+            </accordeon>
+          </div>
+        </div>
+      </ng-template>
+    </tab-item>
+  </comp-tabs>
+</div>
+
+<div class="tabs">
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Using tabs with a custom label template</p>
+  </div>
+
+  <comp-tabs (selectedTabChange)="selectedTabChange($event)">
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>First</p>
+      </ng-template>
+
+      <ng-template tabContent>
+      Content 1
+      </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Second</p>
+      </ng-template>
+
+      <ng-template tabContent>
+      Content 2
+    </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Thrid</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 3
+      </ng-template>
+    </tab-item>
+  </comp-tabs>
+</div>
+
+<div class="tabs">
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Tab group animations</p>
+  </div>
+
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Animation</p>
+  </div>
+
+  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>First</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 1
+      </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Second</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 2
+      </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Thrid</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 3
+      </ng-template>
+    </tab-item>
+  </comp-tabs>
+
+
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>No Animation and with aligned labels</p>
+  </div>
+  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="0ms" tabAlign="start">
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>First</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 1
+      </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Second</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 2
+      </ng-template>
+    </tab-item>
+
+    <tab-item>
+      <ng-template tabLabel>
+        <mat-icon class="mr-2">thumb_up</mat-icon>
+        <p>Thrid</p>
+      </ng-template>
+
+
+      <ng-template tabContent>
+        Content 3
+      </ng-template>
+    </tab-item>
+  </comp-tabs>
+</div>
