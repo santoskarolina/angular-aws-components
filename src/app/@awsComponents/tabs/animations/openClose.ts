@@ -7,6 +7,5 @@ export const openCloseTabAnimation = trigger('openClose', [
   state('closed', style({
     transform: 'translate3d(100%, 0, 0)'
   })),
-  transition('open => closed', animate(`{{time}} ease-in-out`)),
   transition('closed => open', animate('{{time}} ease-in-out'))
 ]);
