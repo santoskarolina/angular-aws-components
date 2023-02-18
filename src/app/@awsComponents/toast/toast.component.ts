@@ -1,6 +1,6 @@
 import { AnimationEvent } from "@angular/animations";
 import { Component, Inject,  OnInit, OnDestroy } from "@angular/core";
-import { fadeToastAnimation, ToastAnimationState } from "./models/animations/toast.animation";
+import { fadeToastAnimation, ToastAnimationState } from "./animations/toast.animation";
 import { ToastConfig } from "./models/toast.config.model";
 import { TOAST_CONFIG_TOKEN } from "./services/toast.service";
 import { ToastRef } from "./models/toast.ref";
