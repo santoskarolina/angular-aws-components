@@ -1,10 +1,10 @@
 import { AnimationEvent } from "@angular/animations";
 import { Component, Inject,  OnInit, OnDestroy } from "@angular/core";
-import { fadeToastAnimation, ToastAnimationState } from "./models/toast.animation";
-import { ToastConfig, ToastPosConfig } from "./models/toast.config.model";
+import { fadeToastAnimation, ToastAnimationState } from "./models/animations/toast.animation";
+import { ToastConfig } from "./models/toast.config.model";
 import { TOAST_CONFIG_TOKEN } from "./services/toast.service";
-import { ToastRef } from "./toast.ref";
-
+import { ToastRef } from "./models/toast.ref";
+import { ToastPosConfig } from "./models/toas.positions.config";
 
 @Component({
   selector: 'aws-toast',

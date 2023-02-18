@@ -2,7 +2,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { defaultToastConfig } from './models/toast.config.model';
+import { defaultToastConfig } from './models/toas.positions.config';
 import { ToastService, TOAST_CONFIG_TOKEN } from './services/toast.service';
 import { ToastComponent } from './toast.component';
 

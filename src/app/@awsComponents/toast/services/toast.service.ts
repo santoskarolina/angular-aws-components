@@ -2,8 +2,9 @@ import { Inject, Injectable, InjectionToken, Injector } from "@angular/core";
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ToastComponent } from "../toast.component";
-import { ToastConfig, ToastPosConfig } from "../models/toast.config.model";
-import { ToastRef } from "../toast.ref";
+import { ToastConfig  } from "../models/toast.config.model";
+import { ToastRef } from "../models/toast.ref";
+import { ToastPosConfig } from "../models/toas.positions.config";
 
 export const TOAST_CONFIG_TOKEN = new InjectionToken('toast-config');
 @Injectable()
