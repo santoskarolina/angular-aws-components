@@ -4,13 +4,13 @@
     <div class="flex flex-col w-full">
 
       <div class="flex justify-{{tabAlign}} w-full">
-        <div *ngFor="let tab of tabs; let index = index">
+        <div *ngFor="let tab of tabs; let index = index; trackBy: trackByFn">
             <ng-container [ngTemplateOutlet]="tabHeader" [ngTemplateOutletContext]="{ $implicit: tab, index: index }"></ng-container>
         </div>
       </div>
 
       <div class="flex justify-center w-full mt-6">
-        <div *ngFor="let tabValue of tabs; let index = index">
+        <div *ngFor="let tabValue of tabs; let index = index; trackBy: trackByFn">
           <div
             [@openClose]="{value: toggleTabAnimation(tabValue), params: {time: animationDuration}}"
             [ngClass]="{'tab-content-active-not-active': !tabValue.active }">
