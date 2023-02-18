@@ -1,7 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
-import { ToastConfig } from './components/toast/models/toas.config.model';
+import { ToastConfig } from './components/toast/models/toast.config.model';
 import { ToastService } from './components/toast/services/toast.service';
 
 @Component({
@@ -52,36 +52,29 @@ constructor(private _toastService: ToastService){}
   selectedTabChange(event: number){
   }
 
-  showToast(position: string){
-    const config: ToastConfig = {
-      message: 'Testando',
-      position: position
-    }
-    this._toastService.showSucessToast(config)
+  showSucessToast(){
+    this._toastService.showSucessToast({
+      message: 'Successs Toast',
+    })
   }
 
-  showErrorToast(position: string){
-    const config: ToastConfig = {
-      message: 'Error',
-      position: position,
+  showErrorToast(){
+    this._toastService.showErrorToast({
+      message: 'Error Toast',
       showCloseButton: true
-    }
-    this._toastService.showErrorToast(config)
+    })
   }
 
-  showInfoToast(position: string){
-    const config: ToastConfig = {
-      message: 'Info',
-      position: position
-    }
-    this._toastService.showInfoToast(config)
+  showInfoToast(){
+    this._toastService.showInfoToast({
+        message: 'Info Toast',
+        time: 5000,
+    })
   }
 
-  showAlertToast(position: string){
-    const config: ToastConfig = {
-      message: 'Info',
-      position: position
-    }
-    this._toastService.showAlertToast(config)
+  showAlertToast(){
+    this._toastService.showAlertToast({
+      message: 'Alert Toast',
+    })
   }
 }

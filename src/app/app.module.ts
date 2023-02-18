@@ -27,7 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     SiebarModule,
     TabsModule,
-    ToastModule,
+    ToastModule.forRoot(),
     MatButtonModule
   ],
   providers: [ToastService],

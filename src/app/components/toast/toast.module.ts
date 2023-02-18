@@ -1,8 +1,9 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ToastService } from './services/toast.service';
+import { defaultToastConfig } from './models/toast.config.model';
+import { ToastService, TOAST_CONFIG_TOKEN } from './services/toast.service';
 import { ToastComponent } from './toast.component';
 
 @NgModule({
@@ -15,4 +16,16 @@ import { ToastComponent } from './toast.component';
   ],
   providers: [ ToastService ]
 })
-export class ToastModule{}
+export class ToastModule{
+  public static forRoot(config = defaultToastConfig):ModuleWithProviders<ToastModule> {
+    return {
+        ngModule: ToastModule,
+        providers: [
+            {
+                provide: TOAST_CONFIG_TOKEN,
+                useValue: { ...defaultToastConfig, ...config },
+            },
+        ],
+    };
+}
+}

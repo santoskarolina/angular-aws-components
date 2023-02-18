@@ -1,96 +1,125 @@
-import { ComponentRef, Injectable } from "@angular/core";
-import { GlobalPositionStrategy, Overlay,  OverlayRef } from '@angular/cdk/overlay';
+import { Inject, Injectable, InjectionToken, Injector } from "@angular/core";
+import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ToastComponent } from "../toast.component";
-import { interval, Observable } from "rxjs";
-import { ToastConfig } from "../models/toas.config.model";
+import { ToastConfig, ToastPosConfig } from "../models/toast.config.model";
+import { ToastRef } from "../toast.ref";
 
+export const TOAST_CONFIG_TOKEN = new InjectionToken('toast-config');
 @Injectable()
-export class ToastService{
-
-  private _overlayRef: OverlayRef | undefined;
-
-  private toastRef: ComponentRef<ToastComponent> | undefined;
+export class ToastService {
+  private toastRef: ToastRef;
 
   constructor(
-    private _overlay: Overlay,
-  ){}
+    private overlay: Overlay,
+    @Inject(TOAST_CONFIG_TOKEN) private toastConfig: ToastPosConfig
+  ) {}
 
-  public showSucessToast(config: ToastConfig){
-    config.type = 'success'
-    this.showTosat(config)
+   /**
+   * @description
+   * Will display a success toast
+    * @param {ToastConfig} config - Configuration object to display the toast
+    * @param {string} config.message - Message that will be displayed in the toast.
+    * @param {number} config.time - Time for the toast to close, by default the time is 5000ms
+    * @param {boolean} [config.showCloseButton] - if true, it should display the button to close the toast
+   *
+   */
+  public showSucessToast(config: ToastConfig) {
+    config.type = 'success';
+    this.showToast(config);
   }
 
-  public showErrorToast(config: ToastConfig){
-    config.type = 'error'
-    this.showTosat(config)
+   /**
+   * @description
+   * Will display a error toast
+    * @param {ToastConfig} config - Configuration object to display the toast
+    * @param {string} config.message - Message that will be displayed in the toast.
+    * @param {number} config.time - Time for the toast to close, by default the time is 5000ms
+    * @param {boolean} [config.showCloseButton] - if true, it should display the button to close the toast
+   *
+   */
+  public showErrorToast(config: ToastConfig) {
+    config.type = 'error';
+    this.showToast(config);
   }
 
-  public showInfoToast(config: ToastConfig){
-    config.type = 'info'
-    this.showTosat(config)
+   /**
+   * @description
+   * Will display a info toast
+    * @param {ToastConfig} config - Configuration object to display the toast
+    * @param {string} config.message - Message that will be displayed in the toast.
+    * @param {number} config.time - Time for the toast to close, by default the time is 5000ms
+    * @param {boolean} [config.showCloseButton] - if true, it should display the button to close the toast
+   *
+   */
+  public showInfoToast(config: ToastConfig) {
+    config.type = 'info';
+    this.showToast(config);
   }
 
-  public showAlertToast(config: ToastConfig){
-    config.type = 'alert'
-    this.showTosat(config)
+  /**
+   * @description
+   * Will display a alert toast
+    * @param {ToastConfig} config - Configuration object to display the toast
+    * @param {string} config.message - Message that will be displayed in the toast.
+    * @param {number} config.time - Time for the toast to close, by default the time is 5000ms
+    * @param {boolean} [config.showCloseButton] - if true, it should display the button to close the toast
+   *
+   */
+  public showAlertToast(config: ToastConfig) {
+    config.type = 'alert';
+    this.showToast(config);
   }
 
-  private showTosat(config: ToastConfig){
+  /**
+   * @description
+   * Will display the toast
+    * @param {ToastConfig} config - Configuration object to display the toast
+    * @param {string} config.message - Message that will be displayed in the toast.
+    * @param {number} config.time - Time for the toast to close, by default the time is 5000ms
+    * @param {string} config.type - Type of toast you want to display, which can be error, success, alert and information
+    * @param {boolean} [config.showCloseButton] - if true, it should display the button to close the toast
+   *
+   */
+  private showToast(config: ToastConfig) {
+    const positionStrategy = this.getPositionStrategy();
+    const overlayRef = this.overlay.create({ positionStrategy });
 
-    if(config.position === 'left'){
-      this.configOverlayPositionleft()
-    }else if(config.position === 'right'){
-      this.configOverlayPositionRigth()
-    }
+    const toastRef = new ToastRef(overlayRef);
+    this.toastRef = toastRef;
 
-      const toastRef: ComponentRef<ToastComponent> = this._overlayRef!.attach(new ComponentPortal(ToastComponent));
-      toastRef.instance.message = config.message;
-      toastRef.instance.class = config.type!;
-      toastRef.instance.closeButton = config.showCloseButton!;
+    const injector = this.getInjector(config, toastRef);
 
-      this.toastRef = toastRef
+    const toastPortal = new ComponentPortal(ToastComponent, null, injector);
 
-      var time = config.time ?? 5000
+    overlayRef.attach(toastPortal);
 
-    this.closeToastByTime(time)
+    return toastRef;
   }
 
-  private closeToastByTime(time: number){
-
-    var close: Observable<number> = interval(time)
-
-    close.subscribe(() => {
-      if (!this._overlayRef!.detach()) this._overlayRef!.detach();
-    });
-  }
-
-
-  public closeToast(){
-    if (!this._overlayRef!.detach()) this._overlayRef!.detach();
-  }
-
-  private configOverlayPositionleft(): void{
-    const positionStrategy = this._overlay.position()
+  getPositionStrategy() {
+    return this.overlay
+      .position()
       .global()
-      .left()
-      .top();
-
-      this.createOverlay(positionStrategy)
+      .top(this.getPosition())
+      .right(this.toastConfig.position!.right + 'px');
   }
 
-  private configOverlayPositionRigth() : void{
-    const positionStrategy = this._overlay.position()
-      .global()
-      .right()
-      .top();
-      this.createOverlay(positionStrategy)
+  getPosition() {
+    const toastRefIsVisible = this.toastRef && this.toastRef.isVisible();
+    const position = toastRefIsVisible
+      ? this.toastRef.getPosition().bottom
+      : this.toastConfig.position!.top;
+
+    return position + 'px';
   }
 
-  private createOverlay(positionStrategy: GlobalPositionStrategy){
-    this._overlayRef = this._overlay.create({
-      scrollStrategy: this._overlay.scrollStrategies.reposition(),
-      positionStrategy: positionStrategy,
+  getInjector(data: ToastConfig, toastRef: ToastRef) {
+    return Injector.create({
+      providers: [
+        { provide: ToastConfig, useValue: data },
+        { provide: ToastRef, useValue: toastRef },
+      ],
     });
   }
 }
