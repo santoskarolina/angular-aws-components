@@ -30,7 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
     ToastModule.forRoot(),
     MatButtonModule
   ],
-  providers: [ToastService],
+  providers: [],
   exports: [ ],
   bootstrap: [AppComponent]
 })
