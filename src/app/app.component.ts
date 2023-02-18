@@ -1,8 +1,7 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
-import { ToastConfig } from './components/toast/models/toast.config.model';
-import { ToastService } from './components/toast/services/toast.service';
+import { ToastService } from './@awsComponents/toast/services/toast.service';
 
 @Component({
   selector: 'app-root',
