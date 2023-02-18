@@ -3,7 +3,7 @@ import { TabContent } from "./tab-content.directive";
 import { TabLabel } from "./tabLabel.directive";
 
 @Directive({
-  selector: "tab-item"
+  selector: "aws-tab-item"
 })
 export class TabItem {
   @ContentChild(TabLabel) tabLabel!: TabLabel;

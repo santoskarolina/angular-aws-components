@@ -1,5 +1,5 @@
-<div class="com__tabs__container">
-  <div class="com__tabs__container_content">
+<div class="aws__tabs__container">
+  <div class="aws__tabs__container_content">
 
     <div class="flex flex-col w-full">
 
@@ -25,7 +25,7 @@
 </div>
 
 <ng-template #tabHeader let-tab let-index="index">
-  <div class="com__tab" [ngClass]="{'com__tab-active': tab.active === true }" (click)="selectTab(tab, index)">
+  <div class="aws__tab" [ngClass]="{'aws__tab-active': tab.active === true }" (click)="selectTab(tab, index)">
     <ng-container *ngTemplateOutlet="tab?.tabLabel?.templateRef || defaultHeader"></ng-container>
   </div>
 

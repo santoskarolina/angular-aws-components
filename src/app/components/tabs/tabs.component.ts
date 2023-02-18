@@ -4,7 +4,7 @@ import { TabItem } from "./directives/tab.directive";
 
 
 @Component({
-  selector: 'comp-tabs',
+  selector: 'aws-tabs-group',
   styleUrls: ['./tabs.component.scss' ],
   templateUrl: './tabs.component.html',
   animations: [

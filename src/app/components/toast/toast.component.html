@@ -1,0 +1,12 @@
+<div class="w-96 h-14 flex items-center py-1 px-2 rounded-md" [class]="class"
+[ngClass]="{'justify-between': closeButton, 'justify-start': !closeButton}">
+  <div class="flex items-center justify-center mr-2">
+    <mat-icon class="text-white m-0 text-center icon__full" [fontIcon]="showIcon().fontIcon" [fontSet]="showIcon().fontSet"></mat-icon>
+  </div>
+  <p class="text-white m-0 p-0 w-full flex items-center justify-start">testesets {{ message }}</p>
+
+  <div class="flex h-full justify-end items-start cursor-pointer" *ngIf="closeButton" (click)="closeTast()">
+    <mat-icon class="text-white m-0 text-center" fontIcon="fa-times" fontSet="fa"></mat-icon>
+  </div>
+</div>
+

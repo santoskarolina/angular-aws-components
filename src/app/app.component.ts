@@ -1,6 +1,8 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
+import { ToastConfig } from './components/toast/models/toas.config.model';
+import { ToastService } from './components/toast/services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -45,6 +47,41 @@ export class AppComponent {
   }
 ]
 
-selectedTabChange(event: number){
-}
+constructor(private _toastService: ToastService){}
+
+  selectedTabChange(event: number){
+  }
+
+  showToast(position: string){
+    const config: ToastConfig = {
+      message: 'Testando',
+      position: position
+    }
+    this._toastService.showSucessToast(config)
+  }
+
+  showErrorToast(position: string){
+    const config: ToastConfig = {
+      message: 'Error',
+      position: position,
+      showCloseButton: true
+    }
+    this._toastService.showErrorToast(config)
+  }
+
+  showInfoToast(position: string){
+    const config: ToastConfig = {
+      message: 'Info',
+      position: position
+    }
+    this._toastService.showInfoToast(config)
+  }
+
+  showAlertToast(position: string){
+    const config: ToastConfig = {
+      message: 'Info',
+      position: position
+    }
+    this._toastService.showAlertToast(config)
+  }
 }

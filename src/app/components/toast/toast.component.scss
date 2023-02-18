@@ -1,0 +1,27 @@
+:host{
+  margin: 0.6rem;
+}
+
+.success{
+  background-color: rgb(39, 168, 39);
+}
+
+.error{
+  background-color: rgb(228, 94, 94);
+}
+
+.info{
+  background-color: rgb(51, 122, 204);
+}
+
+.alert{
+  background-color: rgb(228, 188, 58);
+}
+
+.icon__full{
+  line-height: 0 ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+ }

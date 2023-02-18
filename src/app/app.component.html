@@ -1,4 +1,20 @@
-<sidebar [@openClose]="isOpen ? 'open':'closed'" (isClosed)="isOpen = !isOpen"></sidebar>
+<aws-sidebar [@openClose]="isOpen ? 'open':'closed'" (isClosed)="isOpen = !isOpen"></aws-sidebar>
+
+
+<div  class="tabs">
+
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Basic use of Toast</p>
+  </div>
+
+  <div class="flex w-full justify-around">
+    <button (click)="showToast('left')" mat-raised-button color="primary">Show toast on left</button>
+    <button (click)="showToast('right')" mat-raised-button color="accent">Show toast on right</button>
+    <button (click)="showErrorToast('right')" mat-raised-button color="warn">Show error tost</button>
+    <button (click)="showAlertToast('right')" mat-raised-button color="primary">Show alert tost</button>
+    <button (click)="showInfoToast('right')" mat-raised-button color="primary">Show info tost</button>
+  </div>
+</div>
 
 
 <div class="tabs">
@@ -6,15 +22,15 @@
     <p>Basic use of the tab group</p>
   </div>
 
-  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
-    <tab-item tabTitle="First">
-      <ng-template tabContent>
+  <aws-tabs-group (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
+    <aws-tab-item tabTitle="First">
+      <ng-template awstabContent>
       <button (click)="isOpen = !isOpen" class="p-1 bg-slate-600 text-white rounded-md my-4">Open Sidebar</button>
     </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item tabTitle="Second">
-      <ng-template tabContent>
+    <aws-tab-item tabTitle="Second">
+      <ng-template awstabContent>
       <div class="p-9 flex flex-col items-start">
         <div class="flex w-[40rem]">
           <accordeon [collapsing]="true" [spaccing]="false">
@@ -36,10 +52,10 @@
         </div>
       </div>
     </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item tabTitle="Thrid">
-      <ng-template tabContent>
+    <aws-tab-item tabTitle="Thrid">
+      <ng-template awstabContent>
         <div class="p-9 flex flex-col items-start">
           <div class="flex w-[40rem]">
             <accordeon [collapsing]="true" [spaccing]="false">
@@ -51,8 +67,8 @@
           </div>
         </div>
       </ng-template>
-    </tab-item>
-  </comp-tabs>
+    </aws-tab-item>
+  </aws-tabs-group>
 </div>
 
 <div class="tabs">
@@ -60,42 +76,42 @@
     <p>Using tabs with a custom label template</p>
   </div>
 
-  <comp-tabs (selectedTabChange)="selectedTabChange($event)">
+  <aws-tabs-group (selectedTabChange)="selectedTabChange($event)">
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>First</p>
       </ng-template>
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
       Content 1
       </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Second</p>
       </ng-template>
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
       Content 2
     </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Thrid</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 3
       </ng-template>
-    </tab-item>
-  </comp-tabs>
+    </aws-tab-item>
+  </aws-tabs-group>
 </div>
 
 <div class="tabs">
@@ -107,85 +123,85 @@
     <p>Animation</p>
   </div>
 
-  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
+  <aws-tabs-group (selectedTabChange)="selectedTabChange($event)" animationDuration="300ms">
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>First</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 1
       </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Second</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 2
       </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Thrid</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 3
       </ng-template>
-    </tab-item>
-  </comp-tabs>
+    </aws-tab-item>
+  </aws-tabs-group>
 
 
   <div class="w-full flex mt-4 items-center justify-center">
     <p>No Animation and with aligned labels</p>
   </div>
-  <comp-tabs (selectedTabChange)="selectedTabChange($event)" animationDuration="0ms" tabAlign="start">
+  <aws-tabs-group (selectedTabChange)="selectedTabChange($event)" animationDuration="0ms" tabAlign="start">
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>First</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 1
       </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Second</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 2
       </ng-template>
-    </tab-item>
+    </aws-tab-item>
 
-    <tab-item>
-      <ng-template tabLabel>
+    <aws-tab-item>
+      <ng-template awstabLabel>
         <mat-icon class="mr-2">thumb_up</mat-icon>
         <p>Thrid</p>
       </ng-template>
 
 
-      <ng-template tabContent>
+      <ng-template awstabContent>
         Content 3
       </ng-template>
-    </tab-item>
-  </comp-tabs>
+    </aws-tab-item>
+  </aws-tabs-group>
 </div>

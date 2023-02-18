@@ -1,7 +1,7 @@
 import { Directive, TemplateRef } from "@angular/core";
 
 @Directive({
-  selector: "[tabLabel]"
+  selector: "[awstabLabel]"
 })
 export class TabLabel {
   constructor(public templateRef: TemplateRef<any>) {}

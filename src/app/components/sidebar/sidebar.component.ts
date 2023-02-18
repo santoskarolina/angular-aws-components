@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 
 @Component({
-  selector: 'sidebar',
+  selector: 'aws-sidebar',
   styleUrls: ['./sidebar.component.scss'],
   templateUrl : './sidebar.component.html',
 

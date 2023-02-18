@@ -10,7 +10,9 @@ import { Item1Component } from './components/item1/item1.component';
 import { AccordeonModule } from './components/accordeon/accordeon.module';
 import { SiebarModule } from './components/sidebar/sidebar.module';
 import { TabsModule } from './components/tabs/tabs.module';
-
+import { ToastModule } from './components/toast/toast.module';
+import { ToastService } from './components/toast/services/toast.service';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +26,11 @@ import { TabsModule } from './components/tabs/tabs.module';
     AccordeonModule,
     MatIconModule,
     SiebarModule,
-    TabsModule
+    TabsModule,
+    ToastModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [ToastService],
   exports: [ ],
   bootstrap: [AppComponent]
 })
