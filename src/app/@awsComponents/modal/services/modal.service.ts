@@ -1,12 +1,15 @@
-import { Overlay, OverlayConfig } from "@angular/cdk/overlay";
+import { Overlay, OverlayConfig, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal, ComponentType } from "@angular/cdk/portal";
 import { Injectable, Injector } from "@angular/core";
 import { ModalRef } from "../configs/overlay.ref";
 import { AWS_MODAL_DATA } from "../configs/tokens";
 import { ModalComponent } from "../modal.component";
 
-export interface DialogConfig {
+export class DialogConfig {
   data?: any;
+  closeOnbackdropClick?: boolean = false;
+  width?: string
+  height?: string
 }
 
 @Injectable()
@@ -24,15 +27,18 @@ export class ModalService{
   public openModal<T>(component: ComponentType<T>, config?: DialogConfig): ModalRef {
     const overlayConfig = this.getOverlayConfig()
 
-    const overlayRef = this.overlay.create(overlayConfig);
+    const overlayRef: OverlayRef = this.overlay.create(overlayConfig);
 
     const dialogRef = new ModalRef(overlayRef, component);
 
     const injector = this.getInjectorKeys(config!, dialogRef)
 
     const portal = new ComponentPortal(ModalComponent, null, injector);
-    overlayRef.attach(portal);
+    const dialog = overlayRef.attach(portal).instance;
+    dialog.width = config?.width!
+    dialog.height = config?.height!
 
+    if(config?.closeOnbackdropClick) overlayRef.backdropClick().subscribe(() => overlayRef.dispose());
     return dialogRef;
   }
 
@@ -40,7 +46,7 @@ export class ModalService{
     return Injector.create({
       providers: [
         { provide: ModalRef, useValue: dialogRef },
-        { provide: AWS_MODAL_DATA, useValue: config?.data },
+        { provide: AWS_MODAL_DATA, useValue: config!.data },
       ],
     });
   }
@@ -57,8 +63,8 @@ export class ModalService{
    private getOverlayConfig(): OverlayConfig {
     const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
-      scrollStrategy: this.overlay.scrollStrategies.block(),
-      positionStrategy: this.getOverlayPosition()
+      // scrollStrategy: this.overlay.scrollStrategies.block(),
+      positionStrategy: this.getOverlayPosition(),
     });
 
     return overlayConfig;

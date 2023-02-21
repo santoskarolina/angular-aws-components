@@ -31,7 +31,8 @@ import { ModalModule } from './@awsComponents/modal/modal.module';
     ToastModule.forRoot(),
     MatButtonModule,
     BadgeModule,
-    ModalModule
+    ModalModule,
+    MatButtonModule
   ],
   providers: [],
   exports: [ ],
