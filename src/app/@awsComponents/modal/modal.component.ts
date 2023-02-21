@@ -1,5 +1,5 @@
-import { trigger, style, transition, animate } from "@angular/animations";
-import { Component, Inject, AfterViewInit, ViewChildren,Input, ViewContainerRef, ChangeDetectionStrategy, QueryList, OnInit, Injector } from "@angular/core";
+import { trigger, style, transition, animate  } from "@angular/animations";
+import { Component, Inject, AfterViewInit, ViewChildren,Input, ViewContainerRef, ChangeDetectionStrategy, QueryList, OnInit, Injector, HostBinding } from "@angular/core";
 import { AwsModalRef } from "./configs/overlay.ref";
 import { AWS_MODAL_DATA } from "./configs/tokens";
 
@@ -9,24 +9,32 @@ import { AWS_MODAL_DATA } from "./configs/tokens";
   styleUrls: ['./modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger('openClose', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('100ms', style({ opacity: 1 })),
-      ]),
+    trigger('box', [
       transition(':leave', [
-        animate('100ms', style({ opacity: 0 }))
-      ])
+        animate(200, style({ opacity: 0 })),
+      ]),
+      transition(':enter', [
+        style({
+          transform: 'scale(0.5)'
+        }),
+        animate('200ms ease-out', style({
+          transform: 'scale(1.2)'
+        })),
+        animate('100ms ease-out', style({
+          transform: 'scale(1)'
+        }))
+      ]),
     ]),
   ],
 })
 export class ModalComponent implements AfterViewInit, OnInit {
-
   @Input() public width: string = '10rem';
   @Input() public height: string = '10rem';
 
   @ViewChildren('content', { read: ViewContainerRef })
   content!: QueryList<ViewContainerRef>;
+
+  @HostBinding('@box') public box = true;
 
   constructor(
     public dialogRef: AwsModalRef,
