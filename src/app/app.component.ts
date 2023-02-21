@@ -1,7 +1,7 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
 import { ToastService } from './@awsComponents/toast/services/toast.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,21 @@ import { ToastService } from './@awsComponents/toast/services/toast.service';
   animations: [
     trigger('openClose', [
       state('open', style({
-        transform: 'translate3d(0,0,0)'
+        opacity: 1,
+        visibility: 'visible',
+        transform: 'translateX(0)'
       })),
       state('closed', style({
-        transform: 'translate3d(100%, 0, 0)'
+        opacity: 0,
+        visibility: 'hidden',
+        transform: 'translateX(-100%)'
       })),
-      transition('open => closed', animate('400ms ease-in-out')),
-      transition('closed => open', animate('400ms ease-in-out'))
+      transition('open => closed', [
+        animate('0.2s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
     ]),
   ],
 })
@@ -44,6 +52,30 @@ export class AppComponent {
     headerClass: 'bg-slate-900 text-white',
     component: Item1Component
   }
+]
+
+public badgesItems: any[] = [
+  {
+    label: 1,
+    position: 'after',
+    color: 'blue',
+    size: 'small',
+    text: 'After position, default size'
+  },
+  {
+    label: 2,
+    position: 'after',
+    color: 'orange',
+    size: 'medium',
+    text: 'After position, small size'
+  },
+  {
+    label: 3,
+    position: 'before',
+    color: 'green',
+    size: 'large',
+    text: 'Before position, large size'
+  },
 ]
 
 constructor(private _toastService: ToastService){}

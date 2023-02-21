@@ -1,26 +1,38 @@
 :host {
-  background: #d9dae0;
-  color: #fff;
-  position: fixed;
-  left: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 20%;
-  min-width: 250px;
-  z-index: 9999;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .sidebar{
+  background-color: #fff;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  z-index: 1;
   &_header{
     box-shadow:  rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
+
+  &-content{
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 .close-area{
+  position: absolute;
+  background-color: rgba(50, 50, 93, 0.25);
+  top: 0;
   bottom: 0;
   left: 0;
-  position: absolute;
   right: 0;
-  top: 0;
 }
