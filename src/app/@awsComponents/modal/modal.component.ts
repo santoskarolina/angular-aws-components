@@ -1,6 +1,6 @@
 import { trigger, style, transition, animate } from "@angular/animations";
 import { Component, Inject, AfterViewInit, ViewChildren,Input, ViewContainerRef, ChangeDetectionStrategy, QueryList, OnInit, Injector } from "@angular/core";
-import { ModalRef } from "./configs/overlay.ref";
+import { AwsModalRef } from "./configs/overlay.ref";
 import { AWS_MODAL_DATA } from "./configs/tokens";
 
 @Component({
@@ -29,7 +29,8 @@ export class ModalComponent implements AfterViewInit, OnInit {
   content!: QueryList<ViewContainerRef>;
 
   constructor(
-    public dialogRef: ModalRef,
+    public dialogRef: AwsModalRef,
+    private injector: Injector,
     @Inject(AWS_MODAL_DATA) public data: any)
   { }
 
@@ -49,9 +50,10 @@ export class ModalComponent implements AfterViewInit, OnInit {
   private getInjectorKeys() {
     return Injector.create({
       providers: [
-        { provide: ModalRef, useValue: this.dialogRef },
+        { provide: AwsModalRef, useValue: this.dialogRef },
         { provide: AWS_MODAL_DATA, useValue: this.data },
       ],
+      parent: this.injector
     });
   }
 
@@ -63,8 +65,5 @@ export class ModalComponent implements AfterViewInit, OnInit {
     const content = this.content.toArray();
     const component = content[0].createComponent<any>(this.dialogRef.content, options);
     component.changeDetectorRef.detectChanges();
-    // const portal = new ComponentPortal(his.dialogRef.content, null, injector);
-    // const overlayRef: OverlayRef = this.overlay.create();
-    // const dialog = overlayRef.attach(portal).instance;
   }
 }

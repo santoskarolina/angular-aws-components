@@ -1,7 +1,7 @@
 import { Overlay, OverlayConfig, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal, ComponentType } from "@angular/cdk/portal";
 import { Injectable, Injector } from "@angular/core";
-import { ModalRef } from "../configs/overlay.ref";
+import { AwsModalRef } from "../configs/overlay.ref";
 import { AWS_MODAL_DATA } from "../configs/tokens";
 import { ModalComponent } from "../modal.component";
 
@@ -24,12 +24,12 @@ export class ModalService{
     * @param {DialogConfig} config - Object with the params to pass to the modal
    *
    */
-  public openModal<T>(component: ComponentType<T>, config?: DialogConfig): ModalRef {
+  public openModal<T>(component: ComponentType<T>, config?: DialogConfig): AwsModalRef {
     const overlayConfig = this.getOverlayConfig()
 
     const overlayRef: OverlayRef = this.overlay.create(overlayConfig);
 
-    const dialogRef = new ModalRef(overlayRef, component);
+    const dialogRef = new AwsModalRef(overlayRef, component);
 
     const injector = this.getInjectorKeys(config!, dialogRef)
 
@@ -42,10 +42,10 @@ export class ModalService{
     return dialogRef;
   }
 
-  private getInjectorKeys(config: DialogConfig, dialogRef: ModalRef) {
+  private getInjectorKeys(config: DialogConfig, dialogRef: AwsModalRef) {
     return Injector.create({
       providers: [
-        { provide: ModalRef, useValue: dialogRef },
+        { provide: AwsModalRef, useValue: dialogRef },
         { provide: AWS_MODAL_DATA, useValue: config!.data },
       ],
     });

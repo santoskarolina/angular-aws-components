@@ -2,7 +2,7 @@ import { OverlayRef } from "@angular/cdk/overlay";
 import { Observable } from "rxjs";
 import { Subject } from "rxjs/internal/Subject";
 
-export class ModalRef {
+export class AwsModalRef {
   private afterClosedSubject = new Subject<any>();
 
   constructor(private overlayRef: OverlayRef,  public content: any) {}
