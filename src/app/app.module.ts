@@ -11,8 +11,8 @@ import { AccordeonModule } from './@awsComponents/accordeon/accordeon.module';
 import { SiebarModule } from './@awsComponents/sidebar/sidebar.module';
 import { TabsModule } from './@awsComponents/tabs/tabs.module';
 import { ToastModule } from './@awsComponents/toast/toast.module';
-import { ToastService } from './@awsComponents/toast/services/toast.service';
 import {MatButtonModule} from '@angular/material/button';
+import { BadgeModule } from './@awsComponents/badge/badge.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import {MatButtonModule} from '@angular/material/button';
     SiebarModule,
     TabsModule,
     ToastModule.forRoot(),
-    MatButtonModule
+    MatButtonModule,
+    BadgeModule
   ],
   providers: [],
   exports: [ ],

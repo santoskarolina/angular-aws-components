@@ -1,8 +1,27 @@
-<aws-sidebar [@openClose]="isOpen ? 'open':'closed'" (isClosed)="isOpen = !isOpen"></aws-sidebar>
+<aws-sidebar (isClosed)="isOpen = !isOpen" [isOpen]="isOpen"  [@openClose]="isOpen ? 'open':'closed'">
+  <div>
+    Sidebar
+  </div>
+</aws-sidebar>
+
+<div  class="tabs">
+  <div class="w-full flex mt-4 items-center justify-center">
+    <p>Basic use of Badge</p>
+  </div>
+
+  <div class="flex w-full justify-around">
+    <div *ngFor="let badge of badgesItems">
+      <div
+      awsBadge
+      [awsBadgeLabel]="badge.label"
+      [awsBadgePosition]="badge.position"
+      [awsBadgeSize]="badge.size"
+      [awsBadgeColor]="badge.color" class="flex flex-col bg-slate-600 text-white rounded-md p-4">{{ badge.text }}</div>
+    </div>
+</div>
 
 
 <div  class="tabs">
-
   <div class="w-full flex mt-4 items-center justify-center">
     <p>Basic use of Toast</p>
   </div>
