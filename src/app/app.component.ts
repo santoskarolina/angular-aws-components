@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
 import { ToastService } from './@awsComponents/toast/services/toast.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { ModalService } from './@awsComponents/modal/services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -78,7 +79,7 @@ public badgesItems: any[] = [
   },
 ]
 
-constructor(private _toastService: ToastService){}
+constructor(private _toastService: ToastService, private _modalService: ModalService){}
 
   selectedTabChange(event: number){
   }
@@ -106,6 +107,16 @@ constructor(private _toastService: ToastService){}
   showAlertToast(){
     this._toastService.showAlertToast({
       message: 'Alert Toast',
+    })
+  }
+
+  public openModal(){
+    this._modalService.openModal(
+      Item1Component,
+      {
+      data: {
+        name: 'karol'
+      }
     })
   }
 }

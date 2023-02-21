@@ -1,0 +1,16 @@
+:host{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container{
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+
+  border-radius: 1rem;
+}

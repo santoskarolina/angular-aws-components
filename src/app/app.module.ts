@@ -13,6 +13,7 @@ import { TabsModule } from './@awsComponents/tabs/tabs.module';
 import { ToastModule } from './@awsComponents/toast/toast.module';
 import {MatButtonModule} from '@angular/material/button';
 import { BadgeModule } from './@awsComponents/badge/badge.module';
+import { ModalModule } from './@awsComponents/modal/modal.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { BadgeModule } from './@awsComponents/badge/badge.module';
     TabsModule,
     ToastModule.forRoot(),
     MatButtonModule,
-    BadgeModule
+    BadgeModule,
+    ModalModule
   ],
   providers: [],
   exports: [ ],
