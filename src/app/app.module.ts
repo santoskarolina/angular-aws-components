@@ -14,10 +14,12 @@ import { ToastModule } from './@awsComponents/toast/toast.module';
 import {MatButtonModule} from '@angular/material/button';
 import { BadgeModule } from './@awsComponents/badge/badge.module';
 import { ModalModule } from './@awsComponents/modal/modal.module';
+import { Item2Component } from './components/item2/item2.component';
 @NgModule({
   declarations: [
     AppComponent,
     Item1Component,
+    Item2Component
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import { Item1Component } from './components/item1/item1.component';
 import { ToastService } from './@awsComponents/toast/services/toast.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ModalService } from './@awsComponents/modal/services/modal.service';
+import { Item2Component } from './components/item2/item2.component';
 
 @Component({
   selector: 'app-root',
@@ -112,7 +113,7 @@ constructor(private _toastService: ToastService, private _modalService: ModalSer
 
   public openModal(){
     this._modalService.openModal(
-      Item1Component,{
+      Item2Component,{
         width: '30rem',
         height: '30rem',
         closeOnbackdropClick: true,
