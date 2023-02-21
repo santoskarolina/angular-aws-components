@@ -5,7 +5,7 @@ import { Subject } from "rxjs/internal/Subject";
 export class ModalRef {
   private afterClosedSubject = new Subject<any>();
 
-  constructor(private overlayRef: OverlayRef) {}
+  constructor(private overlayRef: OverlayRef,  public content: any) {}
 
   /**
    * Closes the overlay. You can optionally provide a result.

@@ -26,7 +26,7 @@ export class ModalService{
 
     const overlayRef = this.overlay.create(overlayConfig);
 
-    const dialogRef = new ModalRef(overlayRef);
+    const dialogRef = new ModalRef(overlayRef, component);
 
     const injector = this.getInjectorKeys(config!, dialogRef)
 

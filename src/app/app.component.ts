@@ -112,9 +112,10 @@ constructor(private _toastService: ToastService, private _modalService: ModalSer
 
   public openModal(){
     this._modalService.openModal(
-      Item1Component,
-      {
+      Item1Component,{
       data: {
+        width: '30rem',
+        height: '30rem',
         name: 'karol'
       }
     })
