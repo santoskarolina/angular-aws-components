@@ -2,29 +2,22 @@
   bottom: 0;
   left: 0;
   position: absolute;
-  height: 100%;
   top: 0;
   z-index: 999;
 }
 
 .sidebar {
   background-color: #fff;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 0;
-  top: 0;
   width: 500px;
+  height: 100%;
   z-index: 1;
 
   .content {
-    -webkit-overflow-scrolling: touch;
     overflow: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    padding: 1rem;
   }
 
   .header {
@@ -40,7 +33,6 @@
   right: 0;
   background: #0000009a;
   opacity: 0.75;
-  pointer-events: auto;
   z-index: 1;
 }
 

@@ -1,5 +1,5 @@
 import { trigger, state, style, transition, animate } from "@angular/animations";
-import { Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, Output, Renderer2, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, HostBinding, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: 'aws-sidebar',
@@ -21,7 +21,7 @@ import { Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, Out
         animate('0.2s')
       ]),
       transition('closed => open', [
-        animate('0.5s')
+        animate('0.4s')
       ]),
     ]),
   ],
@@ -43,6 +43,6 @@ export class SidebarComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-     if(this.isOpen) {this.open = '100%'} else{this.open = '0'  }
+     if(this.isOpen) {this.open = '100%'} else {this.open = '0'  }
   }
 }
