@@ -1,15 +1,13 @@
 :host {
-  display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 999;
 }
 
-.sidebar{
+.sidebar {
   background-color: #fff;
   bottom: 0;
   display: flex;
@@ -19,20 +17,32 @@
   top: 0;
   width: 500px;
   z-index: 1;
-  &_header{
-    box-shadow:  rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  .content {
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
-  &-content{
-    overflow-x: hidden;
-    overflow-y: auto;
+  .header {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
 }
-.close-area{
+
+.backdrop {
   position: absolute;
-  background-color: rgba(50, 50, 93, 0.25);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  background: #0000009a;
+  opacity: 0.75;
+  pointer-events: auto;
+  z-index: 1;
 }
+
+
+

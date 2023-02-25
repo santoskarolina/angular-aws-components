@@ -122,4 +122,8 @@ constructor(private _toastService: ToastService, private _modalService: ModalSer
         }
     })
   }
+
+  public closeSidebar(event: boolean){
+    this.isOpen = event
+  }
 }

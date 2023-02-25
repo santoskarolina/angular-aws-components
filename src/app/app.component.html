@@ -1,4 +1,4 @@
-<aws-sidebar (isClosed)="isOpen = !isOpen" [isOpen]="isOpen"  [@openClose]="isOpen ? 'open':'closed'">
+<aws-sidebar (isClosed)="closeSidebar($event)" [isOpen]="isOpen">
   <div>
     Sidebar
   </div>

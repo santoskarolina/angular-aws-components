@@ -1,14 +1,15 @@
-<section class="sidebar" (isClosed)="isOpen = !isOpen">
-  <div class="w-full h-20 bg-gray-400 sidebar_header flex justify-between p-4 items-center">
+<div class="backdrop" (click)="closeSidebar()"></div>
+
+<aside class="sidebar" [@openClose]="isOpen ? 'open':'closed'">
+  <div class="w-full h-20 bg-gray-400 header flex justify-between p-4 items-center">
     <p>{{ title }}</p>
     <button class="!cursor-pointer" (click)="closeSidebar()">
       <mat-icon fontIcon="fa-times" fontSet="fas"></mat-icon>
     </button>
   </div>
 
-  <div class="sidebar-content">
+  <div class="content">
     <ng-content></ng-content>
   </div>
-</section>
+</aside>
 
-<div class="close-area" (click)="closeSidebar()" ></div>
