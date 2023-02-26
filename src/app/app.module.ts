@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BadgeModule } from './@awsComponents/badge/badge.module';
 import { ModalModule } from './@awsComponents/modal/modal.module';
 import { Item2Component } from './components/item2/item2.component';
+import { MenuModule } from './@awsComponents/menu/menu.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { Item2Component } from './components/item2/item2.component';
     MatButtonModule,
     BadgeModule,
     ModalModule,
-    MatButtonModule
+    MatButtonModule,
+    MenuModule
   ],
   providers: [],
   exports: [ ],

@@ -2,13 +2,34 @@
   <div>
     Sidebar
   </div>
-  <p> Sidebar</p>
-  <p> Sidebar</p>
-  <p> Sidebar</p>
-  <p> Sidebar</p>
-  <p> Sidebar</p>
-  <p> Sidebar</p>
+  <p>Sidebar</p>
+  <p>Sidebar</p>
+  <p>Sidebar</p>
+  <p>Sidebar</p>
+  <p>Sidebar</p>
+  <p>Sidebar</p>
 </aws-sidebar>
+
+<button mat-raised-button aws-menu [menuFor]="menu">Open menu</button>
+
+<aws-menu menuTitle="Menu" #menu>
+    <div aws-menu-item class="flex justify-between">
+      <p>Item 1</p>
+      <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
+    </div>
+  <div aws-menu-item class="flex justify-between">
+    <p>Item 2</p>
+    <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
+  </div>
+  <div aws-menu-item class="flex justify-between">
+    <p>Item 3</p>
+    <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
+  </div>
+  <div class="flex justify-between">
+    <p>Item 4 - NOT a menu item</p>
+    <mat-icon fontSet="fa" fontIcon="fa-chevron-up"></mat-icon>
+  </div>
+</aws-menu>
 
 <div  class="tabs flex flex-col items-center">
   <div class="w-full flex mt-4 items-center justify-center">
@@ -50,7 +71,6 @@
     <button (click)="openModal()" mat-raised-button color="primary">Open Modal</button>
   </div>
 </div>
-
 
 <div class="tabs">
   <div class="w-full flex mt-4 items-center justify-center">
@@ -242,3 +262,4 @@
 </div>
 
 </div>
+
