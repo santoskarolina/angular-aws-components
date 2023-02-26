@@ -43,6 +43,6 @@ export class SidebarComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-     if(this.isOpen) {this.open = '100%'} else {this.open = '0'  }
+     if(this.isOpen) {this.open = '100%'} else {this.open = '0' }
   }
 }
