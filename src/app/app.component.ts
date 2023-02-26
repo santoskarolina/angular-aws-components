@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Item1Component } from './components/item1/item1.component';
 import { ToastService } from './@awsComponents/toast/services/toast.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ModalService } from './@awsComponents/modal/services/modal.service';
 import { Item2Component } from './components/item2/item2.component';
+import { AwsMenuComponent } from './@awsComponents/menu/menu.component';
 
 @Component({
   selector: 'app-root',
@@ -80,7 +81,9 @@ public badgesItems: any[] = [
   },
 ]
 
-constructor(private _toastService: ToastService, private _modalService: ModalService){}
+
+constructor(private _toastService: ToastService, private _modalService: ModalService){
+}
 
   selectedTabChange(event: number){
   }
